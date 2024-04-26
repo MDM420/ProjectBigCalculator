@@ -1,0 +1,3 @@
+﻿  ProjectBigCalc.cpp
+C:\Users\ribbe\source\repos\ProjectBigCalc\ProjectBigCalc\ProjectBigCalc.cpp(13,1): warning C4715: 'mustbenumber': not all control paths return a value
+  ProjectBigCalc.vcxproj -> C:\Users\ribbe\source\repos\ProjectBigCalc\x64\Debug\ProjectBigCalc.exe
