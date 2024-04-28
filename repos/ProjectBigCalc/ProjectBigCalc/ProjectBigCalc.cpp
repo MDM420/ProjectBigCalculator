@@ -6,11 +6,13 @@
 using namespace std;
 
 //To do list:
-// 1. a repeat that when you finish everything an option will pop up ask do you wanna start again.
+// 1. a repeat that when you finish everything an option will pop up ask do you wanna start again from the start.
 // 2. advance calc.
 // 3. other calculation
 // 4. add more to the 4 option in main menu funtion
 // 5. decorate eveyrthing (optional).
+// Already done:
+// 1. simple calc- done
 //*************The main menu funtion***************
 static bool mustbenumber(string mustnum) {
 	for (char variable : mustnum) {
@@ -21,17 +23,17 @@ static bool mustbenumber(string mustnum) {
 }
 static void biooption(string bioop) {
 	bool repeat1{};
-	cout << "Simple Calculator: \n";
-	cout << "Only uses +, -, *, / variables and that's it. \n";
-	cout << "Advance Calculator: \n";
-	cout << "Other Calculations: \n";
+	cout << "1- Simple Calculator: \n";
+	cout << "- Only uses +, -, *, / variables and that's it. \n";
+	cout << "2- Advance Calculator: \n";
+	cout << "3- Other Calculations: \n";
 	cout << "Do you wanna go back to the start (1 for Yes and 0 for No). \n";
 }
 //*************The main menu Funtion************
 
 //*************Select Menu Funtion***************
 static void simplecalculator() {
-	
+	cout << "Leave this here just in case.";
 }
 int main() {
 //*************Select Menu***************
@@ -60,43 +62,66 @@ int main() {
 	//*************The main menu***************
 	
 	//*************Select Menu***************
-	double num1, num2;
+	double num1 = 0, num2 = 0, result1 = 0.0, add1;
 	char symbol;
-	bool repeat2{};
+	bool addmore = false, restart1{};
 
 	switch (stoi(option1)) {
 	case 1:
 		cout << "Simple Calculator \n";
 
 		do {
-			cout << "Enter the symbol that shown below: \n";
-			cout << "Remember you can only use +, -, *, / because this is simple math. \n";
-			cin >> symbol;
-			//DO NOT PUT A LETTER ON NUM1 AND NUM2 IT WILL PUT AN INFITE ERROR LOOP!
-			cout << "Enter your 1 number: \n";
-			cin >> num1;
-			cout << "Enter your 2 number: \n";
-			cin >> num2;
+			if (!addmore) {
+				cout << "Enter the symbol that shown below: \n";
+				cout << "Remember you can only use +, -, *, / because this is simple math. \n";
+				cin >> symbol;
+				cout << "Enter your 1 number: \n";
+				cin >> num1;
+				cout << "Enter your 2 number: \n";
+				cin >> num2;
+			}
+			else {
+				num1 = result1;
+				cout << "Enter the symbol that shown below: \n";
+				cout << "Remember you can only use +, -, *, / because this is simple math. \n";
+				cin >> symbol;
+				cout << "Enter your 2 number: \n";
+				cin >> num2;
+			}
 			switch (symbol) {
 			case '+':
-				cout << "Result: " << num1 << " + " << num2 << " = " << num1 + num2 << "\n";
+				result1 = num1 + num2;
+				cout << "Result: " << num1 << " + " << num2 << " = " << result1 << '\n';
 				break;
 			case '-':
-				cout << "Result: " << num1 << " + " << num2 << " = " << num1 - num2 << "\n";
+				result1 = num1 - num2;
+				cout << "Result: " << num1 << " + " << num2 << " = " << result1 << '\n';
 				break;
 			case '*':
-				cout << "Result: " << num1 << " + " << num2 << " = " << num1 * num2 << "\n";
+				result1 = num1 * num2;
+				cout << "Result: " << num1 << " + " << num2 << " = " << result1 << '\n';
 				break;
 			case '/':
-				cout << "Result: " << num1 << " + " << num2 << " = " << num1 / num2 << "\n";
+				if (num2 == 0 || num1 == 0) {
+					result1 = 0;
+					cout << "Result: " << num1 << " + " << num2 << " = " << result1 << '\n';
+				}
 				break;
 			default:
-				cout << "Error (Repeat or Restart the Program). \n";
+				cout << "Error (Repeat or Restart the Program). \n" << endl;
+				break;
 			}
-			cout << "Do you wanna repeat (1 for Yes and 0 for No) \n";
-			cin >> repeat2;
-		} while (repeat2);
-		cout << "Program has finish, please restart if you wanna keep calculating.";
+			cout << "Want to add more to your result (1 for yes and 0 for no): \n";
+			cin >> add1;
+			if (add1 == 1) {
+				addmore = true;
+			} else {
+				addmore = false;
+				cout << "Want to restart the calculation from the top, (1 for yes and 0 for no), (the result you had will be erased). \n";
+				cin >> restart1;
+			}
+		} while (addmore || restart1);
+		cout << "Program has finish, please restart if you wanna keep calculating." << endl;
 		break;
 	case 2:
 		cout << "Advance Calculator";
