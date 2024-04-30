@@ -15,8 +15,8 @@ using namespace std;
 // 1. simple calc- done
 //*************The main menu funtion***************
 static bool mustbenumber(string mustnum) {
-	for (char variable : mustnum) {
-		if (isdigit(variable)) {
+	for (char variable1 : mustnum) {
+		if (isdigit(variable1)) {
 			return false;
 		}
 	}
@@ -120,7 +120,7 @@ int main() {
 				cout << "Want to restart the calculation from the top, (1 for yes and 0 for no), (the result you had will be erased). \n";
 				cin >> restart1;
 			}
-		} while (addmore || restart1);
+		} while (addmore || restart1 || num1 || num2);
 		cout << "Program has finish, please restart if you wanna keep calculating." << endl;
 		break;
 	case 2:
