@@ -1,2 +1,2 @@
-# ProjectBigCalculator
-Complex and standard calculator
+# BigBank
+Simula un banco.
