@@ -4,7 +4,7 @@ Simulates a bank in C++
 ## How to use:                               
                                       
 1- Input a number 1-6 that each number especifies a part of the menu.                           
-2- 1. Create Account, this is the first thing you must do before doing anything else.                     
+2- 1. Create Account, this is the first thing you must do before doing anything else (disclamer the account number is one less than the program gives you, Ex: it gives you 1042 but in fact 1041.                     
 3- 2. Deposit, to deposite an amount of cash.                                         
 4- 3. Withdraw, to withdrw an amount of cash.                                                              
 5- 4. Check Balance, it check the balance from the account created.                         
