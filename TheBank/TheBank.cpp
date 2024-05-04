@@ -7,7 +7,7 @@ using namespace std;
 
 class account {
 public:
-    //^^^Define una clase que es publica llamada account con tres variables: accountnumber, accountname y balance. 
+    //^^^Define una clase que es publica llamada account con tres variables: accountnumber, accountname y balance.----- 
     int accountnumber;
     string accountname;
     double balance;
@@ -57,20 +57,20 @@ public:
 //donde dice balance ?? amount, el + aumento de balance, el > verifica si el balance actual es mayor o igual que la cantidad proporcionada y el -  disminuye el balance
 class Bank {
 public:
-    //Como anterior, Esta parte define una clase que es publica llamada bank, con dos variables: account y nextaccountnum.
+    //Como anterior, Esta parte define una clase que es publica llamada bank, con dos variables: accounts y nextaccountnum.----
     vector<account> accounts;
     int nextaccountnum;
 
     Bank() : nextaccountnum(rand() % 9999 + 1000) {}
-    //^^^El rand ayuda a crear un numero de cuenta random.
+    //^^^El rand ayuda a crear un numero de cuenta random.----
     void processtransaction(int accnumber, double amount, const string transactiontype) {
         auto it = find_if(accounts.begin(), accounts.end(), [accnumber](const account acc) {
             return acc.getaccountnum() == accnumber;
             });
-        //^^^Processtransaction se encarga de realizar una transaccion en una cuenta. Para hacerlo, recibe informacion: 
-        //el numero de cuenta (accnumber), la cantidad de dinero involucrada en la transaccion (amount) y el tipo de transaccion (transactiontype), que puede ser deposit o withdraw.
-        //El find_if para buscar en la lista de cuentas (accounts) aquella que coincida con el numero de cuenta proporcionado.
-        //acc.getaccountnum() == accnumber, compara el numero de cuenta de acc con el numero de cuenta pasado como parametro. Si son iguales, la expresion devuelve true, de lo contrario devuelve false.
+        //^^^Processtransaction se encarga de realizar una transaccion en una cuenta. Para hacerlo, recibe informacion: -----------
+        //el numero de cuenta (accnumber), la cantidad de dinero involucrado en la transaccion (amount) y el tipo de transaccion (transactiontype), que puede ser deposit o withdraw.------------
+        //El find_if para buscar en la lista de cuentas (accounts) aquella que coincida con el numero de cuenta proporcionado.-------------
+        //acc.getaccountnum() == accnumber, compara el numero de cuenta de acc con el numero de cuenta pasado como parametro. Si son iguales, la expresion devuelve true, de lo contrario devuelve false.----------
         if (it != accounts.end()) {
             if (transactiontype == "deposit") {
                 it->deposit(amount);
@@ -78,9 +78,9 @@ public:
             else if (transactiontype == "withdraw") {
                 it->withdraw(amount);
             }
-            //^^^Verifica si se encontro una cuenta con el numero de cuenta especificado.
-            //El tipo de transaccion es deposit, se ejecuta la primera parte del bloque(it->deposit(amount)), que realiza un deposito en la cuenta.
-            //El tipo de transacci�n es withdraw, se ejecuta la segunda parte del bloque(it->withdraw(amount)), que realiza un retiro de la cuenta.
+            //^^^Verifica si se encontro una cuenta con el numero de cuenta especificado.----------
+            //El tipo de transaccion es deposit, se ejecuta la primera parte del bloque(it->deposit(amount)), que realiza un deposito en la cuenta.------------
+            //El tipo de transaccion es withdraw, se ejecuta la segunda parte del bloque(it->withdraw(amount)), que realiza un retiro de la cuenta.-------------
         }
         else {
             cout << "\n";
@@ -98,23 +98,22 @@ public:
         cout << "| Account Number: > " << nextaccountnum << "               |" << endl;
         cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
-//^^^La funcion le dice al usuario que creo una cuenta y le da su numero, el push_back agrega un nuevo objeto de tipo account a la lista accounts. 
+//^^^La funcion le dice al usuario que crea una cuenta y le da su numero, el push_back agrega un nuevo objeto de tipo account a la lista accounts. -----------------
     void accountdetail(int accnumber) {
         auto it = find_if(accounts.begin(), accounts.end(), [accnumber](const account& acc) {
             return acc.getaccountnum() == accnumber;
             });
-        //^^^Accountdetail se encarga de buscar una cuenta. Para hacerlo, recibe informacion: 
-        //el numero de cuenta (accnumber), la cantidad de dinero involucrada en la transaccion (amount) y el tipo de transaccion (transactionType), que puede ser deposit o withdraw.
-        //El find_if para buscar en la lista de cuentas (accounts) aquella que coincida con el numero de cuenta proporcionado.
-        //acc.getaccountnum() == accnumber, compara el numero de cuenta de acc con el numero de cuenta pasado como parametro. Si son iguales, la expresion devuelve true, de lo contrario devuelve false.
+        //^^^Accountdetail se encarga de buscar una cuenta.-------
+        //El find_if para buscar en la lista de cuentas (accounts) aquella que coincida con el numero de cuenta proporcionado.----------------
         if (it != accounts.end()) {
             cout << "\n";
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-            cout << "| Account Number: >                    |" << it->getaccountnum() << endl;
-            cout << "| Account Holder Name: >               |" << it->accountname2() << endl;
-            cout << "| Balance: > $                         |" << it->getBalance() << endl;
+            cout << "| Account Number: > " << it->getaccountnum() << endl;
+            cout << "| Account Holder Name: > " << it->accountname2() << endl;
+            cout << "| Balance: > $" << it->getBalance() << endl;
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
         }
+        //^^^it->...(), Esta parte del codigo esta buscando al numero de la cuenta a la que apunta a la variable it. -----
         else {
             cout << "\n";
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -127,10 +126,8 @@ public:
         auto it = find_if(accounts.begin(), accounts.end(), [accnumber](const account& acc) {
             return acc.getaccountnum() == accnumber;
             });
-        //^^^closeaccount se encarga de cerrar una cuenta. Para hacerlo, recibe informacion: 
-        //el numero de cuenta (accnumber), la cantidad de dinero involucrada en la transaccion (amount) y el tipo de transaccion (transactionType), que puede ser deposit o withdraw.
-        //El find_if para buscar en la lista de cuentas (accounts) aquella que coincida con el numero de cuenta proporcionado.
-        //acc.getaccountnum() == accnumber, compara el numero de cuenta de acc con el numero de cuenta pasado como parametro. Si son iguales, la expresion devuelve true, de lo contrario devuelve false.
+        //^^^closeaccount se encarga de cerrar una cuenta.
+        //El find_if para buscar en la lista de cuentas (accounts) aquella que coincida con el numero de cuenta proporcionado.-------------
         if (it != accounts.end()) {
             accounts.erase(it);
             cout << "\n";
@@ -169,19 +166,7 @@ int main() {
         cout << "| 6. Exit                              |\n";
         cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
         cout << "Select your choice: ";
-        //^^^Este es el menu de opciones.
-        /*************************************************************/
-        //Esta parte se utilizo ai(chatgbt), la razon que solo se ponga un numero no letra.
-        if (!(cin >> option)) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\n";
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-            cout << "| Invalid, please choose 1-6 only.     |" << endl;
-            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-            continue;
-        }
-        /*****************************************************************/
+        cin >> option
         switch (option) {
         case 1: {
             cout << "\n";
@@ -229,8 +214,15 @@ int main() {
         default:
             cout << "Invalid, please choose 1-6 only." << endl;
         }
-        //^^^Da el output de la opcion que eligio, bank...(accnumber) hace que llame la funcion de la clase que esta localizada.
+        //^^^Da el output de la opcion que eligio, -----bank...(accnumber) hace que llame la funcion de la clase que esta localizada.----
     } while (option != 6);
 
     return 0;
 }
+
+/*
+Mejoras de nuestro codigo par futuro:
+1. El random number que sea al que le de el programa.
+2. Poner multiples cuentas.
+3. Poner mas organizado nuestro codigo.
+*/
