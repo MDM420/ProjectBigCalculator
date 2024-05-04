@@ -15,9 +15,9 @@ Simulates a bank in C++
 - vr1
 1. The body was built without the funtions, only the int main was created.
 - vr2
-2. All the funtion where included but it had allot of errors and problems.
+2. All the funtion  and vectors where included but it had allot of errors and problems.
 - vr3
-3. All the problems where fixed and we decorated the program.
+3. All the problems where fixed with the addition of classes, a fix of the vectors and switches and we decorated the program.
 
 
   ## License
